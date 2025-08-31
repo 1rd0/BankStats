@@ -1,0 +1,15 @@
+
+services:
+  bankstats:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        GO_VERSION: "1.24.3"
+        MAIN_DIR: "cmd/cbrstats"
+    image: bankstats:local
+    container_name: bankstats
+    ports:
+      - "${PORT:-8080}:8080"
+    restart: unless-stopped
+
